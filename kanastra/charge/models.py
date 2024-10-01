@@ -8,9 +8,9 @@ class Charge(models.Model):
     debtAmount = models.PositiveIntegerField()
     debtDueDate = models.DateField(auto_now=False, auto_now_add=False)
     debtId = models.UUIDField(unique=True)
-    ticketDate = models.DateField(
+    ticketDate = models.DateTimeField(
         auto_now=False, auto_now_add=False, blank=True, null=True
     )
-    emailDate = models.DateField(
+    emailDate = models.DateTimeField(
         auto_now=False, auto_now_add=False, blank=True, null=True
     )

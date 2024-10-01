@@ -1,6 +1,5 @@
 FROM python:3.9
 ENV PYTHONUNBUFFERED 1
-ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONPATH="/app"
 WORKDIR /app
 COPY requirements.txt /app/requirements.txt
