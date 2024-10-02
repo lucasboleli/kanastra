@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Django (Docker)",
+            "type": "python",
+            "request": "launch",
+            "django": true,
+            "justMyCode": false,
+            "pathMappings": {
+                "/app": "${workspaceFolder}"  // Map the Docker container path to your local path
+            },
+            "port": 8000,  // The port exposed in docker-compose
+            "host": "localhost",
+            "remoteRoot": "/app",  // The path in the container
+            "program": "${workspaceFolder}/kanastra/charge/views.py"
+        }
+    ]
+}
