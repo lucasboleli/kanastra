@@ -10,5 +10,8 @@
         ".",
         "-p",
         "test*.py"
+    ],
+    "python.analysis.extraPaths": [
+        "./kanastra/kanastra"
     ]
 }

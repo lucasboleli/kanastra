@@ -25,6 +25,26 @@ docker compose exec backend python manage.py migrate
 
 Example request using Postman:
 Set the method to POST
-Enter the URL: http://localhost:8000/api/charge/
+Enter the URL: http://localhost:8000/charge/create-charge/
 Go to the Body tab, and select form-data
 Add a key file, select File as its type, and choose the CSV file to upload
+
+
+para rodar testes:
+no arquivo settings.py  a alterar o host do database para localhost
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "admin",
+        "USER": "user",
+        "PASSWORD": "root",
+        "HOST": "db", --> "localhost",
+        "PORT": "3306",
+    }
+}
+
+fornecer privilegios para o usuario no banco de dados
+
+docker exec -it kanastra-db-1 mysql -u root -p
+GRANT ALL PRIVILEGES ON test_admin.* TO 'user'@'%';
+FLUSH PRIVILEGES;

@@ -10,9 +10,6 @@ class Charge(models.Model):
     debt_amount = models.IntegerField()
     debt_due_date = models.DateField()
     debt_id = models.UUIDField(default=uuid.uuid4, unique=True)
-    ticket_date = models.DateTimeField(
-        auto_now=False, auto_now_add=False, blank=True, null=True
-    )
     email_date = models.DateTimeField(
         auto_now=False, auto_now_add=False, blank=True, null=True
     )
