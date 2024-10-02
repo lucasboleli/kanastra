@@ -21,7 +21,7 @@ class ChargeViewSet(viewsets.ViewSet):
 
     def create(self, request, *args, **kwargs):
         logger = logging.getLogger(__name__)
-        CHUNCK_SIZE = 50000
+        CHUNCK_SIZE = 10000
         csv_file = request.FILES.get("file")
         if not csv_file:
             return Response(
