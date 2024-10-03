@@ -6,8 +6,8 @@ from charge.models import Charge
 from charge.emails_tasks import send_emails
 
 
-@pytest.mark.django_db
-def test_scheduled_task_send_emails(caplog):
+@pytest.fixture
+def charge_samples(db):
     Charge.objects.create(
         name="Jessica James",
         government_id="5829",
@@ -35,6 +35,10 @@ def test_scheduled_task_send_emails(caplog):
         debt_id="8b0081c1-7cf2-487f-8fbd-3daf2ffc473d",
     )
 
+
+@pytest.mark.django_db
+def test_scheduled_task_send_emails(caplog, charge_samples):
+
     total_charges = Charge.objects.all().count()
     assert total_charges == 3
 
@@ -47,5 +51,6 @@ def test_scheduled_task_send_emails(caplog):
     total_emails_sent = Charge.objects.filter(email_date__isnull=False).count()
     assert total_emails_sent == 3
 
-    # Check that the task logged the correct message
+    assert "Email sent to lisa11@example.net" in caplog.text
+    assert "Email sent to austinhernandez@example.org" in caplog.text
     assert "Email sent to lauriecantu@example.org" in caplog.text

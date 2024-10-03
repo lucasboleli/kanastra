@@ -88,7 +88,7 @@ class CSVUploadTests(TestCase):
         )
 
     @pytest.mark.django_db
-    def test_duplicate_from_database_should_insert_4(self):
+    def test_duplicate_from_database_should_insert_4_of_5(self):
 
         csv_content = "name,governmentId,email,debtAmount,debtDueDate,debtId\n"
         csv_content += "Elijah Santos,9558,janet95@example.com,7811,2024-01-19,ea23f2ca-663a-4266-a742-9da4c9f4fcb3\n"
