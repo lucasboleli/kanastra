@@ -17,8 +17,5 @@ def start_scheduler():
     )
 
     scheduler.start()
-    print("Scheduler started!")
-    logger = logging.getLogger(__name__)
-    logger.warning("This task runs every minute!")
 
     register(lambda: scheduler.shutdown())

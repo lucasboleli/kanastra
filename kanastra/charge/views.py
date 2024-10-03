@@ -18,11 +18,12 @@ from rest_framework.decorators import api_view
 
 logger = logging.getLogger(__name__)
 
+CHUNCK_SIZE = 10000
+
 
 class ChargeViewSet(viewsets.ViewSet):
 
     def create(self, request, *args, **kwargs):
-        CHUNCK_SIZE = 10000
         csv_file = request.FILES.get("file")
         if not csv_file:
             return Response(
@@ -69,6 +70,11 @@ class ChargeViewSet(viewsets.ViewSet):
                 "debt_id", flat=True
             )
         )
+
+        logger.warning(f"Found {len(existent_charges)} duplicates on the database")
+
+        if len(existent_charges) == len(unique_lines):
+            return
 
         for line in unique_lines:
             if UUID(line["debtId"]) not in existent_charges:
