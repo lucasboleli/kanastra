@@ -23,19 +23,20 @@ A funcionalidade para envio de emails foi feita atravé de uma tarefa agendada q
 
 para rodar testes (que estao dentro da pasta tests) ->
 no arquivo settings.py, alterar o host do database para localhost
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "admin",
-        "USER": "user",
-        "PASSWORD": "root",
-        "HOST": "db", --> "localhost",
-        "PORT": "3306",
+
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": "admin",
+            "USER": "user",
+            "PASSWORD": "root",
+            "HOST": "db", --> "localhost",
+            "PORT": "3306",
+        }
     }
-}
 
 fornecer privilégios para o usuário no banco de dados->
 
-docker exec -it kanastra-db-1 mysql -u root -p
-GRANT ALL PRIVILEGES ON test_admin.* TO 'user'@'%';
-FLUSH PRIVILEGES;
+    docker exec -it kanastra-db-1 mysql -u root -p
+    GRANT ALL PRIVILEGES ON test_admin.* TO 'user'@'%';
+    FLUSH PRIVILEGES;
