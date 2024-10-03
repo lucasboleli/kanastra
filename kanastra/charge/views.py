@@ -18,7 +18,7 @@ from rest_framework.decorators import api_view
 
 logger = logging.getLogger(__name__)
 
-CHUNCK_SIZE = 10000
+CHUNCK_SIZE = 2000
 
 
 class ChargeViewSet(viewsets.ViewSet):
